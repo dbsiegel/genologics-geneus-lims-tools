@@ -4,7 +4,7 @@ genologics-geneus-lims-tools
 Java/groovy interface to Genologics Geneus LIMS via REST API and postgreSQL db. 
 
 
-Copyright (C) 2012 Deborah Siegel, Suzanne Paquette
+Copyright (C) 2012 Suzanne Paquette, Deborah Siegel
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
