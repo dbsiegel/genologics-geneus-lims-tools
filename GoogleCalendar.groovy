@@ -201,5 +201,5 @@ class GoogleCalendar extends LimsScriptClass {
 		)
 		myCal.writeSeqEvent("TESTACXX", "SOMEFILE.txt", SequencingType.HISEQPE, false, "testoutput/")
 	}
-	 */
+	  */
 }
