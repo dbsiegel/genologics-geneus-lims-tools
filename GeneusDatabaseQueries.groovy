@@ -211,7 +211,6 @@ class GeneusDatabaseQueries {
 	
      /**
     * Returns a parameterized query that will provide the sample LIMSIDs of input sample 'names'
-    * (i.e. lab sequencing names)
     * 
     * @return String containing the query ("sqlQuery")
     */
@@ -226,48 +225,6 @@ class GeneusDatabaseQueries {
    
   
    
-   /**
-    * 
-    * Returns a parameterized query that will provide the quantification ancestor artifacts
-    * artifact luids
-    * 
-    * Change the name of your quantification process
-    * 
-    */
-   public static String getSqlQuantAncs() {
-	   return "SELECT ar.luid AS searchanalyteluid " + 
-			"    ,descp.luid AS processluid " + 
-			"    ,descp.createddate AS processrundate " + 
-			"    ,descar.luid AS quantluid " + 
-			"FROM artifact_ancestor_map AS aam " + 
-			"   INNER JOIN artifact AS ar " + 
-			"       INNER JOIN artifacttype AS at " + 
-			"       ON at.typeid = ar.artifacttypeid " + 
-			"   ON ar.artifactid = aam.artifactid " + 
-			"   INNER JOIN artifact AS anar " + 
-			"        INNER JOIN processiotracker AS pio " + 
-			"            INNER JOIN process AS descp " + 
-			"                INNER JOIN processtype AS descpt " + 
-			"                ON descpt.typeid = descp.typeid " + 
-			"            ON descp.processid = pio.processid " + 
-			"            INNER JOIN outputmapping AS om " + 
-			"                INNER JOIN artifact AS descar " + 
-			"                    INNER JOIN artifacttype AS descat " + 
-			"                    ON descat.typeid = descar.artifacttypeid " + 
-			"                ON descar.artifactid = om.outputartifactid " + 
-			"            ON om.trackerid = pio.trackerid " + 
-			"        ON pio.inputartifactid = anar.artifactid " + 
-			"        INNER JOIN artifacttype AS anarat " + 
-			"        ON anarat.typeid = anar.artifacttypeid " + 
-			"   ON anar.artifactid = aam.ancestorartifactid " + 
-			"WHERE (ar.luid SIMILAR TO ?) " + 
-			"   AND (descpt.displayname SIMILAR TO '%DNA Quantification%') " + 
-			"   AND (at.displayname NOT LIKE 'ResultFile') " + 
-			"   AND (anarat.displayname NOT LIKE 'ResultFile') " + 
-			"   AND (descat.displayname NOT LIKE 'ResultFile') " + 
-			"ORDER BY descp.createddate DESC " + 
-			";"
-  }
    	
 		
 }
